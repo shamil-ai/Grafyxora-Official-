@@ -1,0 +1,168 @@
+/* Handles the structure and flexbox positioning */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Replace the old code with this */
+body, html {
+    width: 100%;
+    min-height: 100vh; /* Changed from height: 100vh to min-height */
+    display: block; /* Removed display: flex, which was shrinking the page */
+    background-color: #fafafa;
+}
+
+.hero-section {
+    min-height: 85vh; /* Allows the first page to maintain its height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .top-nav {
+        /* --- Logo Styling --- */
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.site-logo {
+    height: 40px; /* Change this number to make the logo bigger or smaller */
+    width: auto;
+    object-fit: contain;
+}
+        
+        padding: 1.5rem 1.5rem;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+/* --- About Layout --- */
+.about-section {
+    padding: 6rem 4rem 2rem 4rem;
+    background-color: #fafafa;
+}
+
+.about-content {
+    display: flex;
+    gap: 4rem;
+    /* This "flex-start" is the magic line that moves the right photo up to align with the text */
+    align-items: flex-start; 
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-text-area {
+    flex: 1;
+}
+
+.about-image-area {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Pushes the right-side photo down just enough to align perfectly with "I'm Shamil" */
+.desktop-image {
+    margin-top: 4.5rem; 
+}
+
+/* Removes/hides the extra bottom photo from the computer screen */
+.mobile-image {
+    display: none; 
+}
+
+.portrait-placeholder {
+    width: 100%;
+    max-width: 400px;
+    aspect-ratio: 4 / 5;
+    background-color: transparent;
+}
+
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* --- Skills Layout --- */
+.wavy-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    background: transparent;
+    margin-top: 3rem;
+}
+
+.skills-section {
+    padding: 3rem 4rem 6rem 4rem;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skills-buttons {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills-cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #0b1a47; /* The dark blue from your design */
+    border-radius: 16px;
+    max-width: 1100px;
+    width: 100%;
+    padding: 2.5rem 2rem;
+    gap: 2rem; /* Gap between the columns */
+}
+
+.skill-card {
+    padding: 0 1rem;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .skills-cards-container {
+        grid-template-columns: 1fr; /* Stacks the cards vertically on phones */
+        gap: 3rem;
+    }
+}
+
+    
+    .desktop-image {
+        display: none; /* Hides the right-side computer photo */
+    }
+    
+    .mobile-image {
+        display: flex; /* Reveals the photo between the heading and text */
+        justify-content: flex-start;
+        margin: 1.5rem 0; /* Adds a nice gap above and below the photo */
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+    .skills-cards-container {
+        flex-direction: column;
+    }
+}

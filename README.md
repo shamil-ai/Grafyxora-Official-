@@ -1,30 +1,42 @@
-# Responsive Portfolio Website Bianca
+# Grafyxora 🎨✨
 
-This project is part of a step-by-step YouTube tutorial in which we build a responsive portfolio website Bianca from scratch using HTML, CSS and JavaScript.
+Welcome to **Grafyxora**! This is a clean, modern, and fully responsive personal portfolio website designed to showcase professional graphic design works, branding identities, 3D typography, and motion graphics.
 
-## 🎬 [Watch the Demo & Code](https://youtu.be/JSFIGIA9Zrk) 
+🌐 **Live Link:** [grafyxora.vercel.app](https://grafyxora.vercel.app/)
 
-![preview img](/preview.png) 
+---
 
-## 📌 Project Features
-- Fully responsive portfolio website Bianca (Mobile First Methodology).
-- Clear and semantic HTML structure.
-- Use of CSS variables and modern JavaScript functions.
-- Smooth scrolling between sections.
-- Scroll animations.
-- Compatible with all modern browsers and devices.
+## 🚀 Features
 
-## 📦 Download the resources directly
-1. Click the green **code** button.
-2. Click **Download ZIP**.
-3. Extract the ZIP file and open the project in your code editor.
+- **Responsive Design:** Optimized for seamless viewing on smartphones, tablets, and desktops.
+- **Minimalist UI/UX:** Clean aesthetics focused primarily on showcasing visual artwork.
+- **Fast Performance:** Hosted on Vercel for high-speed delivery and smooth user experience.
+- **Design Toolkit Integration:** Features custom highlights of tools used like Adobe Illustrator, Canva, Pixellab, and Pixart.
 
-## 📥 Clone or Fork the repository
-You can **clone** the repository to your local machine or **fork** it in your GitHub account to get all the project's resources.
+---
 
-```bash
-# Clone the repository using HTTPS
-git clone https://github.com/bedimcode/responsive-porfolio-website-Bianca.git
-```
+## 🛠️ Tech Stack Used
 
-Designed & developed with ❤️ by **[Bedimcode](https://www.youtube.com/@Bedimcode)** 
+- **HTML5:** Semantic structure for a well-organized layout.
+- **CSS3:** Custom styles, animations (`animations.css`), and responsive layout grids (`layout.css`).
+- **JavaScript:** Dynamic elements and interactive UI controls (`script.js`, `effects.js`).
+- **Hosting:** Deployed instantly using **Vercel**.
+
+---
+
+## 📁 Repository Structure
+
+```text
+├── 1074659.jpg              # Portfolio Background / Asset
+├── H                        # Project Asset
+├── adobe-express.png        # Icon asset
+├── animations.css          # Custom animations and transitions
+├── canva-icon.png           # Icon asset
+├── effects.js               # Interactive script effects
+├── index.html               # Main website file
+├── layout.css               # Grid and layout styling
+├── logo.png                 # Official Grafyxora Logo
+├── pixart-icon.png          # Icon asset
+├── pixellab-icon.jpg        # Icon asset
+├── script.js                # Core JavaScript file
+└── style.css                # General CSS styles

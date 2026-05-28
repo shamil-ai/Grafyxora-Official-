@@ -1,0 +1,933 @@
+/* --- Global Styles --- */
+*, *::before, *::after {
+    box-sizing: border-box; 
+}
+
+/* Enable Smooth Scrolling Behavior Globally */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(180deg, #051410 0%, #092e25 100%);
+    background-attachment: fixed;
+    color: #ffffff;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* --- Core Animations --- */
+/* Slow rotation animation configured for all stars */
+.star-i, .star-j, .stars {
+    display: inline-block;
+    animation: slowRotate 8s linear infinite;
+}
+
+@keyframes slowRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 3D Bending Scroll Reveal Engine */
+.reveal-element {
+    opacity: 0;
+    transform: translateY(50px) scale(0.93) rotateX(15deg); /* Bending effect origin state */
+    transform-origin: top center;
+    transition: opacity 0.85s cubic-bezier(0.215, 0.610, 0.355, 1), 
+                transform 0.85s cubic-bezier(0.215, 0.610, 0.355, 1);
+    will-change: opacity, transform;
+}
+
+/* Smoothly unbends, scales up, and locks into position on viewport collision */
+.reveal-element.active {
+    opacity: 1;
+    transform: translateY(0) scale(1) rotateX(0deg);
+}
+
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+
+/* --- Dynamic Neon Tracker Glow --- */
+.neon-glow-tracker {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(22, 199, 154, 0.25) 0%, rgba(22, 199, 154, 0) 70%);
+    border-radius: 50%;
+    pointer-events: none; 
+    z-index: 9998; 
+    transform: translate(-50%, -50%); 
+    mix-blend-mode: screen;
+    transition: width 0.2s ease, height 0.2s ease;
+    will-change: left, top;
+}
+
+.neon-glow-tracker.active-interact {
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(22, 199, 154, 0.4) 0%, rgba(22, 199, 154, 0) 70%);
+}
+
+/* --- Vertical Navigation Sidebar --- */
+.vertical-nav {
+    position: fixed; 
+    top: 50%;
+    left: 30px; 
+    transform: translateY(-50%);
+    background: rgba(17, 36, 32, 0.85); 
+    border: 1px solid rgba(22, 199, 154, 0.2); 
+    border-radius: 40px; 
+    padding: 20px 10px;
+    box-shadow: 0 0 25px rgba(22, 199, 154, 0.15); 
+    z-index: 9999;
+    backdrop-filter: blur(10px); 
+    transition: all 0.3s ease;
+}
+
+.vertical-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+}
+
+.vertical-nav ul li {
+    position: relative;
+}
+
+.vertical-nav ul li a {
+    text-decoration: none;
+    color: #a8b8b4; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.vertical-nav ul li a:hover {
+    background: #16c79a; 
+    color: #051410; 
+    box-shadow: 0 0 15px rgba(22, 199, 154, 0.6);
+}
+
+.vertical-nav ul li a .icon {
+    font-size: 1.2rem;
+}
+
+.vertical-nav ul li a .text {
+    position: absolute;
+    left: 60px; 
+    background: #112420;
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    opacity: 0; 
+    pointer-events: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    border: 1px solid rgba(22, 199, 154, 0.2);
+}
+
+.vertical-nav ul li a:hover .text {
+    opacity: 1; 
+    transform: translateX(5px);
+}
+
+/* --- Top Navigation Bar --- */
+.top-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 1000;
+    width: 100%;
+}
+
+.logo-container .site-logo {
+    height: 35px;
+    width: auto;
+}
+
+.top-links {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.top-links a {
+    text-decoration: none;
+    color: #a8b8b4; 
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.top-links a:hover {
+    color: #16c79a; 
+}
+
+.nav-text {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #f0f0f0;
+    font-weight: 400;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    padding: 100px 20px;
+}
+
+.portfolio-title {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15em;
+    margin: 0 0 1.5rem 0;
+    color: #ffffff; 
+}
+
+.text-part {
+    position: relative;
+    z-index: 2;
+}
+
+.highlight-wrapper {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.2em;
+    margin-left: 0.05em;
+    color: #16c79a;
+}
+
+.i-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.star-i {
+    position: absolute;
+    top: -0.45em;
+    font-size: 0.45em;
+    line-height: 1;
+    color: #ffffff;
+}
+
+.highlight-bg {
+    position: absolute;
+    top: 48%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    height: 1.3em;
+    background: transparent;
+    border-radius: 100px;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.olio-text {
+    color: #16c79a;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.3em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+}
+
+.scroll-indicator {
+    margin-top: 5rem;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #f0f0f0;
+}
+
+/* --- Base Layout Alignments --- */
+.about-section, 
+.tools-section,
+.testimonials-section,
+.contact-section,
+.portfolio {
+    width: 100%;
+    padding: 80px 20px;
+}
+
+.about-content {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row; 
+    align-items: center;
+    gap: 60px;
+}
+
+.column-layout {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* --- About Media Assets --- */
+.about-image-area {
+    width: 100%;
+    max-width: 380px; 
+    flex-shrink: 0; 
+}
+
+.portrait-placeholder {
+    width: 100%;
+    aspect-ratio: 4 / 5; 
+    border-radius: 20px; 
+    overflow: hidden;
+}
+
+.portrait-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+}
+
+.about-text-area {
+    flex: 1;
+}
+
+.hello-bg-text {
+    font-size: 5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.03);
+    line-height: 0.5;
+    margin-left: -5px;
+    letter-spacing: 0.05em;
+}
+
+.about-text-area h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.about-text-area p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-weight: 400;
+}
+
+/* --- Moving Tech Infinite Marquee Animation CSS --- */
+.tech-marquee-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 10px 0;
+}
+
+.marquee-track {
+    display: flex !important;
+    width: max-content;
+    animation: marqueeShift 20s linear infinite; 
+    gap: 40px !important;
+}
+
+@keyframes marqueeShift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+}
+
+.tech-marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+.tools-grid {
+    display: flex;
+}
+
+.tool-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(17, 36, 32, 0.6);
+    padding: 12px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+    white-space: nowrap;
+}
+
+.tool-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.tool-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.tool-info span {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* --- Universal Component Titles --- */
+.section-title-standard {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 2rem 0;
+}
+
+.section-title-standard span, .text-accent {
+    color: #16c79a;
+}
+
+/* --- Projects Portfolio Styles --- */
+.portfolio .about-content {
+    flex-direction: column; 
+    align-items: flex-start;
+    gap: 30px;
+}
+
+.skills-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    letter-spacing: 0.05em;
+}
+
+.skills-title .j-wrapper {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.skills-title .star-j {
+    position: absolute;
+    top: -0.45em;
+    font-size: 0.5em;
+    color: #16c79a; 
+}
+
+/* --- Portfolio Filters & Cards Area --- */
+.portfolio-filters { 
+    display: flex; 
+    gap: 15px; 
+    margin-bottom: 20px; 
+    flex-wrap: wrap; 
+}
+
+.filter-btn { 
+    background: transparent; 
+    color: #a8b8b4;
+    border: 1px solid rgba(255, 255, 255, 0.1); 
+    padding: 8px 20px; 
+    border-radius: 30px; 
+    cursor: pointer; 
+    transition: 0.3s ease; 
+    font-family: 'Montserrat', sans-serif;
+}
+
+.filter-btn.active, .filter-btn:hover { 
+    background: #16c79a; 
+    color: #051410; 
+    border-color: #16c79a; 
+    font-weight: 600;
+}
+
+.close-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    font-size: 1.2rem;
+}
+
+.close-btn:hover {
+    background: #ff4757;
+    border-color: #ff4757;
+}
+
+.portfolio-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 20px;
+    width: 100%;
+}
+
+.glass-card {
+    background-color: #112420;
+    padding: 25px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block; 
+}
+
+.glass-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-tag {
+    display: block;
+    font-size: 0.8rem;
+    color: #a8b8b4;
+    margin-bottom: 8px;
+}
+
+.glass-card h3 {
+    font-size: 1.4rem;
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    font-weight: 600;
+}
+
+.glass-card p {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Testimonials Section Styling --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+.testimonial-card {
+    background: #112420;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid rgba(22, 199, 154, 0.05);
+    position: relative;
+}
+
+.testimonial-card::before {
+    content: "“";
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 4rem;
+    color: rgba(22, 199, 154, 0.1);
+    font-family: serif;
+}
+
+.review-text {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e0e0e0;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.client-info h4 {
+    font-size: 1.05rem;
+    margin: 0 0 4px 0;
+    color: #16c79a;
+}
+
+.client-info span {
+    font-size: 0.8rem;
+    color: #a8b8b4;
+}
+
+/* --- Contact Section Styles & Layout --- */
+.contact-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 50px;
+}
+
+.contact-info-area {
+    flex: 1;
+}
+
+.contact-info-area p {
+    color: #e0e0e0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.direct-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.channel-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.channel-link i {
+    color: #16c79a;
+    font-size: 1.2rem;
+}
+
+.whatsapp-btn {
+    align-self: flex-start;
+    background: #112420;
+    border: 1px solid #16c79a;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(22, 199, 154, 0.1);
+    transition: all 0.3s;
+}
+
+.whatsapp-btn:hover {
+    background: #16c79a;
+    color: #051410;
+    box-shadow: 0 4px 15px rgba(22, 199, 154, 0.4);
+}
+
+.whatsapp-btn i {
+    transition: color 0.3s;
+}
+
+.whatsapp-btn:hover i {
+    color: #051410;
+}
+
+/* Contact Form UI Styling */
+.contact-form-container {
+    flex: 1;
+    width: 100%;
+    background: #112420;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.portfolio-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    background: rgba(5, 20, 16, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    border-color: #16c79a;
+}
+
+.form-submit-btn {
+    background: #16c79a;
+    color: #051410;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.form-submit-btn:hover {
+    box-shadow: 0 5px 15px rgba(22, 199, 154, 0.4);
+    transform: translateY(-2px);
+}
+
+/* --- Footer Structure Layout --- */
+.main-footer {
+    background: #04110e;
+    padding: 60px 40px 20px 40px;
+    border-top: 1px solid rgba(255, 255, 255, 0.02);
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-brand h3 {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    margin: 0 0 15px 0;
+}
+
+.footer-brand p {
+    color: #a8b8b4;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    max-width: 300px;
+}
+
+.footer-nav-links h4, 
+.footer-socials h4 {
+    font-size: 1rem;
+    margin: 0 0 20px 0;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.footer-nav-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.footer-nav-links ul li a {
+    color: #a8b8b4;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s;
+}
+
+.footer-nav-links ul li a:hover {
+    color: #16c79a;
+}
+
+/* Footer Social Icons Grid Layout */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background: #112420;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #a8b8b4;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.social-icons a:hover {
+    background: #16c79a;
+    color: #051410;
+    transform: translateY(-3px);
+}
+
+.footer-copyright {
+    text-align: center;
+    padding-top: 20px;
+    color: #667774;
+    font-size: 0.8rem;
+}
+
+/* --- Wavy Divider Framework --- */
+.wavy-divider {
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+}
+
+.wavy-divider svg {
+    position: relative;
+    display: block;
+    width: calc(140% + 1.3px); 
+    height: 120px;
+}
+
+/* --- Modal Global Overlay View --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10000; 
+    left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(5, 20, 16, 0.95);
+}
+
+.modal-content {
+    margin: 10% auto; padding: 20px; width: 80%; max-width: 600px;
+    background: #112420; border-radius: 16px; text-align: center; color: white;
+}
+
+.close-modal {
+    float: right; font-size: 2rem; cursor: pointer; color: #16c79a;
+}
+
+.modal-content img { width: 100%; border-radius: 8px; margin-bottom: 15px; }
+
+/* --- Large View Adjustments --- */
+@media (min-width: 901px) {
+    body {
+        padding-left: 100px;
+    }
+    .top-nav {
+        padding-left: 40px;
+    }
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media (max-width: 900px) {
+    .vertical-nav,
+    .top-links {
+        display: none;
+    }
+
+    body {
+        padding-left: 0 !important;
+    }
+
+    .about-content, .contact-flex {
+        flex-direction: column-reverse; 
+        text-align: center;
+        gap: 40px;
+    }
+
+    .contact-flex {
+        flex-direction: column;
+    }
+
+    .about-image-area {
+        max-width: 250px;
+    }
+
+    .whatsapp-btn {
+        align-self: center;
+    }
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 35px;
+        text-align: center;
+    }
+
+    .footer-nav-links ul {
+        align-items: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+
+    .portfolio-title {
+        flex-wrap: wrap;
+        justify-content: center;
+        line-height: 1.2;
+    }
+    }
+/* Styling for Email and Message input fields */
+input[type="email"], 
+textarea,
+.form-input { 
+    width: 100%;
+    background-color: #0c1a16; /* Dark background matching your theme */
+    color: #ffffff; /* White text color */
+    border: 1px solid #14b8a6; /* Green/Teal border color */
+    border-radius: 8px; /* Slightly rounded corners */
+    padding: 14px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+/* When clicking inside the input box */
+input[type="email"]:focus, 
+textarea:focus {
+    border-color: #059669; /* Brighter green on focus */
+}
+
+/* Styling to fix the 'Send' Button */
+button[type="submit"], 
+input[type="submit"],
+.form-button {
+    width: 100%;
+    background-color: #10b981; /* Solid green background */
+    color: #0b1a15; /* Dark text color inside button */
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* Button hover effect */
+button[type="submit"]:hover, 
+input[type="submit"]:hover {
+    background-color: #059669; /* Darker green on hover */
+}
